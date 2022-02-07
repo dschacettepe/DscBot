@@ -24,12 +24,13 @@ class Mentor():
     self.links.append(link)
 """
 
-welcome_page = 938000108312748049
-role_1 = 938034247887912971
-guild = 938000108312748042
-mentor_yardim = 939573365927198720
-teknik_destek_channel = 939573247949832262
-bot_komut_channel = 938004512134807595
+welcome_page = int('your welcome page id')
+role_1 = int('role message id')
+guild = int('your guild id')
+mentor_yardim = int('your channel id')
+teknik_destek_channel = int('your channel id')
+bot_komut_channel = int('your channel id')
+token = 'Your token'
 
 banned_words = []
 mentors_list = {}
@@ -50,7 +51,7 @@ async def on_ready():
     print("is running")
     print(time.asctime())
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="🚀 !!help"))
-    guild = client.get_guild(938000108312748042)
+    guild = client.get_guild(int('your channel id'))
 
     while True:
         await statistic(guild=guild)
@@ -92,12 +93,12 @@ async def on_message(message):
             await client.process_commands(message)
         elif str(message.content).startswith("!!yasakli_kelime_ekle"):
             pass
-        elif message.channel.id == 938004512134807595:
+        elif message.channel.id == int('your channel id'):
             await message.delete()
             return
-        elif not message.channel == client.get_channel(937640082343604244):
-            if message.author.id != 937603996439437323:
-                if message.channel.id == 938004512134807595:
+        elif not message.channel == client.get_channel(int('your channel id')):
+            if message.author.id != int('your author id'):
+                if message.channel.id == int('your channel id'):
                     await message.delete()
                     return
                 banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
@@ -111,7 +112,7 @@ async def on_message(message):
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
-            elif message.channel.id == 938004512134807595:
+            elif message.channel.id == int('your channel id'):
                 await message.delete()
                 return
     except Exception:
@@ -517,4 +518,4 @@ async def takimlar_update(ctx):
         await ctx.message.delete()
 
 
-client.run('OTM3NjAzOTk2NDM5NDM3MzIz.YfeJxA.yy-q5gjvv8Kyv-qLv5edNf4NN-M')
+client.run(token)
