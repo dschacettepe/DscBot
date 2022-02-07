@@ -519,3 +519,4 @@ async def takimlar_update(ctx):
 
 
 client.run(token)
+  
