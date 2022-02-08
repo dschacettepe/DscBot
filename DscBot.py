@@ -18,6 +18,7 @@ teknik_destek_channel = int('technic help channel id')
 bot_komut_channel = int('channel for bot command id')
 bot_id = int('your bot\'s id')
 unkown_id = int('actually don\'t know')
+house_master = int('house master\'s id')
 token = str('your token')
 
 banned_words = []
@@ -55,8 +56,11 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx,error):
+    global house_master
     print(error)
+    house_master_pc = get(ctx.guild.members,id=house_master)
     await ctx.message.delete()
+    await house_master_pc.send(f'{error} \n {ctx.author}')
 
 @client.event
 async def on_member_join(member):
