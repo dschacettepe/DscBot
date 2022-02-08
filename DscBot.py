@@ -6,20 +6,20 @@ from discord.utils import get
 import os
 import random
 import time
-from os import system
+from os import system, environ
 import json
 import sys
 
-welcome_page = int('welcome page id')
-role_1 = int('role message id')
-guild = int('your guild\'s id')
-mentor_yardim = int('mentor help channel id')
-teknik_destek_channel = int('technic help channel id')
-bot_komut_channel = int('channel for bot command id')
-bot_id = int('your bot\'s id')
-unkown_id = int('actually don\'t know')
-house_master = int('house master\'s id')
-token = str('your token')
+WELCOME_CH = int(environ.get("WELCOME_CH"))
+ROLE_MESSAGE = int(environ.get("ROLE_MESSAGE"))
+GUILD = int(environ.get("GUILD"))
+MENTOR_HELP_CH = int(environ.get("MENTOR_HELP_CH"))
+TECH_SUPPORT_CH = int(environ.get("TECH_SUPPORT_CH"))
+COMMAND_CH = int(environ.get("COMMAND_CH"))
+BOT_ID = int(environ.get("BOT_ID"))
+UNKNOWN_ID = int(environ.get("UNKNOWN_ID"))
+HOUSE_MASTER = int(environ.get("HOUSE_MASTER"))
+BOT_TOKEN = str(environ.get("BOT_TOKEN"))
 
 banned_words = []
 mentors_list = {}
@@ -36,36 +36,36 @@ bot = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    global guild,banned_words
+    global GUILD,banned_words
     print("is running")
     print(time.asctime())
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="🚀 !!help"))
-    guild = client.get_guild(guild)
+    GUILD = client.get_guild(GUILD)
 
+    # Load bad words list.
+    with open(file='kufur.txt', mode='r', encoding='utf-8') as file:
+        banned_words = file.readlines()
+
+    # Load mentor informations from JSON file
+    with open("mentors.json",'r',encoding='utf-8') as f:
+        mentors_list['mentor'] = json.load(f)
     while True:
-        await statistic(guild=guild)
-        with open(file='kufur.txt', mode='r', encoding='utf-8') as file:
-            banned_words = file.readlines()
-
-        with open("mentors.json",'r',encoding='utf-8') as f:
-            mentors_list['mentor'] = json.load(f)
-
-
+        await statistic(guild=GUILD)
         await asyncio.sleep(600)
 
 
 @client.event
 async def on_command_error(ctx,error):
-    global house_master
+    global HOUSE_MASTER
     print(error)
-    house_master_pc = get(ctx.guild.members,id=house_master)
+    house_master_pc = get(ctx.guild.members,id=HOUSE_MASTER)
     await ctx.message.delete()
     await house_master_pc.send(f'{error} \n {ctx.author}')
 
 @client.event
 async def on_member_join(member):
-    global welcome_page
-    channel = client.get_channel(welcome_page)
+    global WELCOME_CH
+    channel = client.get_channel(WELCOME_CH)
     await channel.send(f"Hoşgeldin serverımıza {member.mention} !  :partying_face:")
     await statistic(guild=member.guild)
 
@@ -75,7 +75,7 @@ async def on_member_remove(member):
 
 @client.event
 async def on_message(message):
-    global banned_words,bot_komut_channel,bot_id,unkown_id
+    global banned_words,COMMAND_CH,BOT_ID,UNKNOWN_ID
     """
     :param message: yasaklı kelimeler kısmı
     :return:
@@ -85,12 +85,12 @@ async def on_message(message):
             await client.process_commands(message)
         elif str(message.content).startswith("!!yasakli_kelime_ekle"):
             pass
-        elif message.channel.id == bot_komut_channel:
+        elif message.channel.id == COMMAND_CH:
             await message.delete()
             return
-        elif not message.channel == client.get_channel(unkown_id):
-            if message.author.id != bot_id:
-                if message.channel.id == bot_komut_channel:
+        elif not message.channel == client.get_channel(UNKNOWN_ID):
+            if message.author.id != BOT_ID:
+                if message.channel.id == COMMAND_CH:
                     await message.delete()
                     return
                 banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
@@ -104,7 +104,7 @@ async def on_message(message):
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
-            elif message.channel.id == bot_komut_channel:
+            elif message.channel.id == COMMAND_CH:
                 await message.delete()
                 return
     except Exception:
@@ -121,7 +121,7 @@ async def on_raw_reaction_add(payload):
 
 async def add_a_role(payload,reaction,role_wanted):
     global mentors_list
-    if payload.message_id == role_1 and payload.emoji.name == reaction:
+    if payload.message_id == ROLE_MESSAGE and payload.emoji.name == reaction:
         member = payload.member
         guild = member.guild
         emoji = payload.emoji.name
@@ -144,7 +144,7 @@ async def on_raw_reaction_remove(payload):
 
 async def remove_a_role(payload,reaction_name,role_wanted):
     global mentors_list
-    if payload.message_id == role_1 and payload.emoji.name == reaction_name:
+    if payload.message_id == ROLE_MESSAGE and payload.emoji.name == reaction_name:
         user = payload.user_id
         guild = client.get_guild(payload.guild_id)
         member = guild.get_member(user)
@@ -365,7 +365,7 @@ async def ping(ctx):
 
 @client.command()
 async def takim_olustur(ctx,teams_list : str):
-    global guild
+    global GUILD
     if ctx.author.guild_permissions.administrator:
 
         with open(teams_list,'r',encoding='utf-8') as file:
@@ -373,14 +373,14 @@ async def takim_olustur(ctx,teams_list : str):
         for i in lines:
             i = i.rstrip()
             details = i.split(",")
-            myCategory = await guild.create_category(f"{details[0]}")
-            myRole = await guild.create_role(name=f"{details[0]}")
-            mentor = get(guild.roles, name='Mentorlar')
+            myCategory = await GUILD.create_category(f"{details[0]}")
+            myRole = await GUILD.create_role(name=f"{details[0]}")
+            mentor = get(GUILD.roles, name='Mentorlar')
             await myCategory.set_permissions(myRole, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(mentor, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(ctx.guild.default_role, read_messages=False, connect=False)
-            await guild.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
-            await guild.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
+            await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
+            await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
             for j in details[1:]:
                 try:
                     user = get(ctx.guild.members, nick=j)
@@ -442,9 +442,9 @@ async def mentor_describe(ctx):
 
 @client.command()
 async def mentor_destek(ctx):
-    global mentor_yardim
+    global MENTOR_HELP_CH
     mentors = get(ctx.guild.roles,name='Mentorlar')
-    channel = client.get_channel(mentor_yardim)
+    channel = client.get_channel(MENTOR_HELP_CH)
     competitorRole = None
     for roles in ctx.author.roles:
         if not roles.name in ['@everyone','Teknik Ekip','Jüri','Yarışmacı','Hackathon Görevlileri','DSC Bot']:
@@ -457,8 +457,8 @@ async def mentor_destek(ctx):
 
 @client.command()
 async def teknik_destek(ctx):
-    global teknik_destek_channel
-    channel = client.get_channel(teknik_destek_channel)
+    global TECH_SUPPORT_CH
+    channel = client.get_channel(TECH_SUPPORT_CH)
     technic = get(ctx.guild.roles, name='Teknik Ekip')
     competitorRole = None
     for roles in ctx.author.roles:
@@ -494,4 +494,5 @@ async def takimlar_update(ctx):
         await ctx.message.delete()
 
 
-client.run(token)
+client.run(BOT_TOKEN)
+
