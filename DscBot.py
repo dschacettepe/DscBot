@@ -18,6 +18,7 @@ TECH_SUPPORT_CH = int(environ.get("TECH_SUPPORT_CH"))
 COMMAND_CH = int(environ.get("COMMAND_CH"))
 BOT_ID = int(environ.get("BOT_ID"))
 UNKNOWN_ID = int(environ.get("UNKNOWN_ID"))
+ADMIN_BOT_COMMAND = int(environ.get('ADMIN_BOT_COMMAND'))
 HOUSE_MASTER = int(environ.get("HOUSE_MASTER"))
 BOT_TOKEN = str(environ.get("BOT_TOKEN"))
 
@@ -75,22 +76,31 @@ async def on_member_remove(member):
 
 @client.event
 async def on_message(message):
-    global banned_words,COMMAND_CH,BOT_ID,UNKNOWN_ID
+    global banned_words,bot_komut_channel,bot_id,unkown_id,ADMIN_BOT_COMMAND
     """
     :param message: yasaklı kelimeler kısmı
     :return:
     """
     try:
         if str(message.content).startswith("!!"):
+            if message.channel.id == ADMIN_BOT_COMMAND:
+                await message.delete()
+                return
             await client.process_commands(message)
         elif str(message.content).startswith("!!yasakli_kelime_ekle"):
+            if message.channel.id == ADMIN_BOT_COMMAND:
+                await message.delete()
+                return
             pass
-        elif message.channel.id == COMMAND_CH:
+        elif message.channel.id == bot_komut_channel:
             await message.delete()
             return
-        elif not message.channel == client.get_channel(UNKNOWN_ID):
-            if message.author.id != BOT_ID:
-                if message.channel.id == COMMAND_CH:
+        elif message.channel.id == ADMIN_BOT_COMMAND:
+            await message.delete()
+            return
+        elif not message.channel == client.get_channel(unkown_id):
+            if message.author.id != bot_id:
+                if message.channel.id == bot_komut_channel:
                     await message.delete()
                     return
                 banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
@@ -104,7 +114,7 @@ async def on_message(message):
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
-            elif message.channel.id == COMMAND_CH:
+            elif message.channel.id == bot_komut_channel:
                 await message.delete()
                 return
     except Exception:
