@@ -83,19 +83,19 @@ async def on_message(message):
     """
     try:
         if str(message.content).startswith("!!"):
-            if message.channel.id == ADMIN_BOT_COMMAND:
+            if message.channel.id == ADMIN_BOT_COMMAND and not message.author.guild_permissions.administrator:
                 await message.delete()
                 return
             await client.process_commands(message)
         elif str(message.content).startswith("!!yasakli_kelime_ekle"):
-            if message.channel.id == ADMIN_BOT_COMMAND:
+            if message.channel.id == ADMIN_BOT_COMMAND and not message.author.guild_permissions.administrator:
                 await message.delete()
                 return
             pass
         elif message.channel.id == COMMAND_CH:
             await message.delete()
             return
-        elif message.channel.id == ADMIN_BOT_COMMAND:
+        elif message.channel.id == ADMIN_BOT_COMMAND :
             await message.delete()
             return
         elif not message.channel == client.get_channel(UNKNOWN_ID):
@@ -380,8 +380,8 @@ async def clear_dc(ctx, limit: str):
 
 @client.command()
 async def ping(ctx):
-    latency = bot.latency()
-    await ctx.author.send(f'ping latency {latency}ms')
+    latency = client.latency
+    await ctx.author.send(f'ping latency {latency * 1000}ms')
 
 @client.command()
 async def takim_olustur(ctx,teams_list : str):
