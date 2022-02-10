@@ -43,15 +43,15 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="🚀 !!help"))
     GUILD = client.get_guild(GUILD)
 
-    # Load bad words list.
-    with open(file='kufur.txt', mode='r', encoding='utf-8') as file:
-        banned_words = file.readlines()
-
-    # Load mentor informations from JSON file
-    with open("mentors.json",'r',encoding='utf-8') as f:
-        mentors_list['mentor'] = json.load(f)
     while True:
         await statistic(guild=GUILD)
+        with open(file='kufur.txt', mode='r', encoding='utf-8') as file:
+            banned_words = file.readlines()
+
+        with open("mentors.json",'r',encoding='utf-8') as f:
+            mentors_list['mentor'] = json.load(f)
+
+
         await asyncio.sleep(600)
 
 
@@ -59,7 +59,7 @@ async def on_ready():
 async def on_command_error(ctx,error):
     global HOUSE_MASTER
     print(error)
-    house_master_pc = get(ctx.guild.members,id=HOUSE_MASTER)
+    house_master_pc = get(ctx.guild.members, id=HOUSE_MASTER)
     await ctx.message.delete()
     await house_master_pc.send(f'{error} \n {ctx.author}')
 
@@ -76,7 +76,7 @@ async def on_member_remove(member):
 
 @client.event
 async def on_message(message):
-    global banned_words,bot_komut_channel,bot_id,unkown_id,ADMIN_BOT_COMMAND
+    global banned_words,COMMAND_CH,BOT_ID,UNKNOWN_ID,ADMIN_BOT_COMMAND
     """
     :param message: yasaklı kelimeler kısmı
     :return:
@@ -92,15 +92,15 @@ async def on_message(message):
                 await message.delete()
                 return
             pass
-        elif message.channel.id == bot_komut_channel:
+        elif message.channel.id == COMMAND_CH:
             await message.delete()
             return
         elif message.channel.id == ADMIN_BOT_COMMAND:
             await message.delete()
             return
-        elif not message.channel == client.get_channel(unkown_id):
-            if message.author.id != bot_id:
-                if message.channel.id == bot_komut_channel:
+        elif not message.channel == client.get_channel(UNKNOWN_ID):
+            if message.author.id != BOT_ID:
+                if message.channel.id == COMMAND_CH:
                     await message.delete()
                     return
                 banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
@@ -114,7 +114,7 @@ async def on_message(message):
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
-            elif message.channel.id == bot_komut_channel:
+            elif message.channel.id == COMMAND_CH:
                 await message.delete()
                 return
     except Exception:
@@ -130,7 +130,7 @@ async def on_raw_reaction_add(payload):
     await statistic(guild=client.get_guild(payload.guild_id))
 
 async def add_a_role(payload,reaction,role_wanted):
-    global mentors_list
+    global mentors_list,ROLE_MESSAGE
     if payload.message_id == ROLE_MESSAGE and payload.emoji.name == reaction:
         member = payload.member
         guild = member.guild
@@ -153,7 +153,7 @@ async def on_raw_reaction_remove(payload):
     await statistic(guild = client.get_guild(payload.guild_id))
 
 async def remove_a_role(payload,reaction_name,role_wanted):
-    global mentors_list
+    global mentors_list,ROLE_MESSAGE
     if payload.message_id == ROLE_MESSAGE and payload.emoji.name == reaction_name:
         user = payload.user_id
         guild = client.get_guild(payload.guild_id)
@@ -180,10 +180,11 @@ async def yasakli_kelime_ekle(ctx):
             for i in messages:
                 file.writelines('\n'+i)
         banned_words.extend(messages)
-    message = await ctx.send('kelime başarıyla eklendi.')
+        message = await ctx.send('kelime başarıyla eklendi.')
+        await message.delete()
 
     await ctx.message.delete()
-    await message.delete()
+
 
 
 @client.command()
@@ -197,6 +198,8 @@ async def say(ctx):
         message = await ctx.send(embed=embed)
         for i in ['💻','📗','⚙']:
             await message.add_reaction(emoji=i)
+
+    await ctx.message.delete()
 
 
 
@@ -238,15 +241,15 @@ async def teknik_help(ctx):
         message = await ctx.send(embed=embed)
 
         time.sleep(10)
-        await ctx.message.delete()
         await message.delete()
+    await ctx.message.delete()
 
 @client.command()
 async def say2(ctx):
     if ctx.author.guild_permissions.administrator:
         mesaj = ctx.message.content[7:]
-        await ctx.message.delete()
         await ctx.send(mesaj)
+    await ctx.message.delete()
 
 
 
@@ -367,10 +370,17 @@ async def clear_dc(ctx, limit: str):
             message = await ctx.send(f'Seçilen {limit} mesaj silindi.')
             await asyncio.sleep(10)
             await message.delete()
+        else:
+            await ctx.channel.purge(limit=int(60) + 1)
+            message = await ctx.send(f'Seçilen {60} mesaj silindi.')
+            await asyncio.sleep(10)
+            await message.delete()
+    else:
+        await ctx.message.delete()
 
 @client.command()
 async def ping(ctx):
-    latency = bot.latency
+    latency = bot.latency()
     await ctx.author.send(f'ping latency {latency}ms')
 
 @client.command()
@@ -406,8 +416,8 @@ async def takim_olustur(ctx,teams_list : str):
                         continue
         message = await ctx.send('Takımlar başarıyla oluşturuldu.')
         await asyncio.sleep(10)
-        await ctx.message.delete()
         await message.delete()
+    await ctx.message.delete()
 
 @client.command()
 async def timer(ctx,full_time : int,speaker : discord.Member):
@@ -488,7 +498,7 @@ async def mentor_update(ctx):
 
         await asyncio.sleep(10)
         await ctx.message.delete()
-        await message.delete()
+    await message.delete()
 
 
 @client.command()
@@ -501,8 +511,7 @@ async def takimlar_update(ctx):
 
         await asyncio.sleep(10)
         await message.delete()
-        await ctx.message.delete()
+    await ctx.message.delete()
 
 
 client.run(BOT_TOKEN)
-
