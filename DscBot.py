@@ -125,8 +125,8 @@ async def on_message(message):
 async def on_raw_reaction_add(payload):
     #await add_a_role(payload=payload,reaction="🧑‍⚖️",role_wanted='Jüri')
     await add_a_role(payload=payload, reaction="💻", role_wanted='Yarışmacı')
-    await add_a_role(payload=payload, reaction="📗", role_wanted='Mentorlar')
-    await add_a_role(payload=payload, reaction="⚙", role_wanted='Hackathon Görevlileri')
+    #await add_a_role(payload=payload, reaction="📗", role_wanted='Mentorlar')
+    #await add_a_role(payload=payload, reaction="⚙", role_wanted='Hackathon Görevlileri')
     await statistic(guild=client.get_guild(payload.guild_id))
 
 async def add_a_role(payload,reaction,role_wanted):
