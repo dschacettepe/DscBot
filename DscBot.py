@@ -210,9 +210,6 @@ async def help(ctx):
     embed.add_field(name="!!help", value="komutların işlevini gösterir.", inline=False)
     #embed.add_field(name="!!kalan_sure", value="Hackatonun bitimine kalan süreyi verir.", inline=False)
     #embed.add_field(name="!!yasakli_kelime_ekle", value="Yasaklı kelime listesine yeni kelimeler eklemenizi sağlar.", inline=False)
-    embed.add_field(name="!!networking", value="Networking oluşturmak için Büyük Salon kanalından odalara rastgele katılımcıları dağıtır.",
-                    inline=False)
-    #embed.add_field(name="!!rewind", value="Dağıtılan katılımcıları büyük salona geri toplar.",inline=False)
     embed.add_field(name="!!kalan_sure", value="Hackaton'un bitimine kalan süreyi verir.", inline=False)
     embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
     embed.add_field(name="!!mentor_destek", value="Mentorlere yardım istediğinize dair bir bildirim gider.", inline=False)
@@ -221,7 +218,7 @@ async def help(ctx):
 
     time.sleep(10)
     await ctx.message.delete()
-    await message.delete()
+    #await message.delete()
 
 @client.command()
 async def teknik_help(ctx):
@@ -230,6 +227,10 @@ async def teknik_help(ctx):
         embed.set_author(name="Help")
         embed.add_field(name="!!teknik_help", value="komutların işlevini gösterir.", inline=False)
         #embed.add_field(name="!!kalan_sure", value="Hackatonun bitimine kalan süreyi verir.", inline=False)
+        embed.add_field(name="!!networking",
+                        value="Networking oluşturmak için Büyük Salon kanalından odalara rastgele katılımcıları dağıtır.",
+                        inline=False)
+        embed.add_field(name="!!rewind", value="Dağıtılan katılımcıları büyük salona geri toplar.", inline=False)
         embed.add_field(name="!!yasakli_kelime_ekle <eklenecek-kelime1> <eklenecek-kelime1> ...", value="Yasaklı kelime listesine yeni kelimeler eklemenizi sağlar.", inline=False)
         embed.add_field(name="!!say", value="Embed mesaj attırır.",
                         inline=False)
@@ -241,7 +242,7 @@ async def teknik_help(ctx):
         message = await ctx.send(embed=embed)
 
         time.sleep(10)
-        await message.delete()
+        #await message.delete()
     await ctx.message.delete()
 
 @client.command()
@@ -325,42 +326,44 @@ async def kalan_sure(ctx):
 async def rewind(ctx):
     guild = ctx.guild
     await ctx.message.delete()
-    open_channels = [get(guild.voice_channels, name='oda_1'),
-                     get(guild.voice_channels, name='oda_2'),
-                     get(guild.voice_channels, name='oda_3'),
-                     get(guild.voice_channels, name='oda_4'),
-                     get(guild.voice_channels, name='oda_5'),
-                     get(guild.voice_channels, name='oda_6')]
+    if ctx.author.guild_permissions.administrator:
+        open_channels = [get(guild.voice_channels, name='oda_1'),
+                         get(guild.voice_channels, name='oda_2'),
+                         get(guild.voice_channels, name='oda_3'),
+                         get(guild.voice_channels, name='oda_4'),
+                         get(guild.voice_channels, name='oda_5'),
+                         get(guild.voice_channels, name='oda_6')]
 
-    main_channel = get(guild.voice_channels, name='büyük_salon')
+        main_channel = get(guild.voice_channels, name='büyük_salon')
 
-    for i in open_channels:
-        for j in i.members:
-            await j.move_to(channel=main_channel)
+        for i in open_channels:
+            for j in i.members:
+                await j.move_to(channel=main_channel)
 
 @client.command()
 async def networking(ctx):
     guild = ctx.guild
     await ctx.message.delete()
-    open_channels = [get(guild.voice_channels, name='oda_1'),
-                     get(guild.voice_channels, name='oda_2'),
-                     get(guild.voice_channels, name='oda_3'),
-                     get(guild.voice_channels, name='oda_4'),
-                     get(guild.voice_channels, name='oda_5'),
-                     get(guild.voice_channels, name='oda_6')]
+    if ctx.author.guild_permissions.administrator:
+        open_channels = [get(guild.voice_channels, name='oda_1'),
+                         get(guild.voice_channels, name='oda_2'),
+                         get(guild.voice_channels, name='oda_3'),
+                         get(guild.voice_channels, name='oda_4'),
+                         get(guild.voice_channels, name='oda_5'),
+                         get(guild.voice_channels, name='oda_6')]
 
-    main_channel = get(guild.voice_channels, name='büyük_salon')
-    mean_person = len(main_channel.members) / 6
-    for i in main_channel.members:
-        while True:
-            channel_selected = random.randint(0,6)
-            if len(open_channels[channel_selected].members) < mean_person:
-                await i.move_to(channel=open_channels[channel_selected])
-                break
-            else:
-                continue
-    time.sleep(600)
-    await rewind(ctx)
+        main_channel = get(guild.voice_channels, name='büyük_salon')
+        mean_person = len(main_channel.members) / 6
+        for i in main_channel.members:
+            while True:
+                channel_selected = random.randint(0,6)
+                if len(open_channels[channel_selected].members) < mean_person:
+                    await i.move_to(channel=open_channels[channel_selected])
+                    break
+                else:
+                    continue
+        time.sleep(600)
+        await rewind(ctx)
 
 @client.command()
 async def clear_dc(ctx, limit: str):
