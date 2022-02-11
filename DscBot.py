@@ -83,24 +83,24 @@ async def on_message(message):
     """
     try:
         if str(message.content).startswith("!!"):
-            if message.channel.id == ADMIN_BOT_COMMAND and not message.author.guild_permissions.administrator:
+            if message.channel.id == ADMIN_BOT_COMMAND and (not message.author.guild_permissions.administrator):
                 await message.delete()
                 return
             await client.process_commands(message)
         elif str(message.content).startswith("!!yasakli_kelime_ekle"):
-            if message.channel.id == ADMIN_BOT_COMMAND and not message.author.guild_permissions.administrator:
+            if message.channel.id == ADMIN_BOT_COMMAND and (not message.author.guild_permissions.administrator):
                 await message.delete()
                 return
             pass
-        elif message.channel.id == COMMAND_CH:
+        elif message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
             await message.delete()
             return
-        elif message.channel.id == ADMIN_BOT_COMMAND :
+        elif message.channel.id == ADMIN_BOT_COMMAND and (not message.content.startswith("!!")):
             await message.delete()
             return
         elif not message.channel == client.get_channel(UNKNOWN_ID):
             if message.author.id != BOT_ID:
-                if message.channel.id == COMMAND_CH:
+                if message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
                     await message.delete()
                     return
                 banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
@@ -114,7 +114,7 @@ async def on_message(message):
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
-            elif message.channel.id == COMMAND_CH:
+            elif message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
                 await message.delete()
                 return
     except Exception:
