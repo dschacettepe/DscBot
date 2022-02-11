@@ -217,7 +217,7 @@ async def help(ctx):
     message = await ctx.send(embed=embed)
 
     time.sleep(10)
-    await ctx.message.delete()
+    #await ctx.message.delete()
     #await message.delete()
 
 @client.command()
@@ -243,7 +243,7 @@ async def teknik_help(ctx):
 
         time.sleep(10)
         #await message.delete()
-    await ctx.message.delete()
+    #await ctx.message.delete()
 
 @client.command()
 async def say2(ctx):
