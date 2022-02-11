@@ -93,9 +93,13 @@ async def on_message(message):
                 return
             pass
         elif message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
+            if message.author.id == BOT_ID:
+                return
             await message.delete()
             return
         elif message.channel.id == ADMIN_BOT_COMMAND and (not message.content.startswith("!!")):
+            if message.author.id == BOT_ID:
+                return
             await message.delete()
             return
         elif not message.channel == client.get_channel(UNKNOWN_ID):
@@ -243,7 +247,11 @@ async def teknik_help(ctx):
 
         time.sleep(10)
         await message.delete()
-    await ctx.message.delete()
+        await ctx.message.delete()
+    else:
+        time.sleep(4)
+        await ctx.message.delete()
+
 
 @client.command()
 async def say2(ctx):
