@@ -73,14 +73,14 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     await statistic(guild=member.guild)
-
+"""
 @client.event
 async def on_message(message):
     global banned_words,COMMAND_CH,BOT_ID,UNKNOWN_ID,ADMIN_BOT_COMMAND
-    """
+    """"""
     :param message: yasaklı kelimeler kısmı
     :return:
-    """
+    """"""
     try:
         if str(message.content).startswith("!!"):
             if message.channel.id == ADMIN_BOT_COMMAND and not message.author.guild_permissions.administrator:
@@ -119,7 +119,7 @@ async def on_message(message):
                 return
     except Exception:
         pass
-
+"""
 
 @client.event
 async def on_raw_reaction_add(payload):
