@@ -212,7 +212,7 @@ async def help(ctx):
     #embed.add_field(name="!!yasakli_kelime_ekle", value="Yasaklı kelime listesine yeni kelimeler eklemenizi sağlar.", inline=False)
     embed.add_field(name="!!networking", value="Networking oluşturmak için Büyük Salon kanalından odalara rastgele katılımcıları dağıtır.",
                     inline=False)
-    embed.add_field(name="!!rewind", value="Dağıtılan katılımcıları büyük salona geri toplar.",inline=False)
+    #embed.add_field(name="!!rewind", value="Dağıtılan katılımcıları büyük salona geri toplar.",inline=False)
     embed.add_field(name="!!kalan_sure", value="Hackaton'un bitimine kalan süreyi verir.", inline=False)
     embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
     embed.add_field(name="!!mentor_destek", value="Mentorlere yardım istediğinize dair bir bildirim gider.", inline=False)
