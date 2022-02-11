@@ -214,7 +214,7 @@ async def help(ctx):
     embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
     embed.add_field(name="!!mentor_destek", value="Mentorlere yardım istediğinize dair bir bildirim gider.", inline=False)
     embed.add_field(name="!!teknik_destek", value="Tekniik destek ekibine yardım istediğinize dair bir bildirim gider.", inline=False)
-    message = await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
     time.sleep(10)
     #await ctx.message.delete()
@@ -239,7 +239,7 @@ async def teknik_help(ctx):
         embed.add_field(name="!!takim_olustur <txt-filename>", value="Girilen takımlar txt dosyasına göre takım kanallarını/rollerini kurar.", inline=False)
         embed.add_field(name="!!mentor_update <.json file>", value="Atılan .json dosyasını \'mentors.json\' olarak update eder.", inline=False)
         embed.add_field(name="!!teknik_update <.txt file>", value="Atılan .txt dosyasını kendi ismiyle update eder.", inline=False)
-        message = await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
         time.sleep(10)
         #await message.delete()
