@@ -68,6 +68,10 @@ async def on_member_join(member):
     global WELCOME_CH
     channel = client.get_channel(WELCOME_CH)
     await channel.send(f"Hoşgeldin serverımıza {member.mention} !  :partying_face:")
+    embed = discord.Embed(colour=discord.Colour.magenta())
+    embed.set_author(name="Zorunlu")
+    embed.add_field(value= 'Sunucudaki kullanıcı isminizi "İsim Soyisim" şeklinde yapmak zorunludur.\nÖR: *Utku Bora*',inline=True)
+    await member.send(embed=embed)
     await statistic(guild=member.guild)
 
 @client.event
@@ -171,7 +175,6 @@ async def remove_a_role(payload,reaction_name,role_wanted):
         for i in mentors_list:
           if i.member == member:
             mentors_list.remove(i)"""
-
 
 
 @client.command()
