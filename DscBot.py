@@ -68,10 +68,12 @@ async def on_member_join(member):
     global WELCOME_CH
     channel = client.get_channel(WELCOME_CH)
     await channel.send(f"Hoşgeldin serverımıza {member.mention} !  :partying_face:")
-    embed = discord.Embed(colour=discord.Colour.magenta())
+
+    embed = discord.Embed(colour=discord.Colour.from_rgb(50, 182, 183))
     embed.set_author(name="Zorunlu")
-    embed.add_field(value= 'Sunucudaki kullanıcı isminizi "İsim Soyisim" şeklinde yapmak zorunludur.\nÖR: *Utku Bora*',inline=True)
+    embed.add_field(name="Yapılması Gereken:", value='Sunucudaki kullanıcı isminizi "İsim Soyisim" şeklinde yapmak zorunludur.\nÖR: *Utku Bora*', inline=True)
     await member.send(embed=embed)
+
     await statistic(guild=member.guild)
 
 @client.event
