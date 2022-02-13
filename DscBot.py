@@ -72,7 +72,12 @@ async def on_member_join(member):
     embed = discord.Embed(colour=discord.Colour.from_rgb(50, 182, 183))
     embed.set_author(name="Zorunlu")
     embed.add_field(name="Yapılması Gereken:", value='Sunucudaki kullanıcı isminizi "İsim Soyisim" şeklinde yapmak zorunludur.\nÖR: *Utku Bora*', inline=True)
+    embed.add_field(name="Uyarı:",
+                    value='Eğer sunucudaki kullanıcı adınızı \"isim soyisim\" şeklinde yapmazsanız Takımınızın kanallarına erişemezsiniz.',inline=True)
+    embed.add_field(name="Nasıl Yapılır:",
+                    value='Sunucudaki profil isminizi güncellemek için sağ taraftaki üyeler kısmından\nkendinizi bulup sağ tıklayıp, \"Sunucu Profilini Düzenle\" butonuna tıkladıktan sonra\nkullanıcı adınızı güncelleyebilirsiniz.',inline=True)
     await member.send(embed=embed)
+    await member.send('Eğer kullanıcı adınızı güncellediyseniz veya kullanıcı adınız hali hazırda \"isim soyisim\" şeklindeyse yukarıdaki mesajı dikkate almayınız.')
 
     await statistic(guild=member.guild)
 
