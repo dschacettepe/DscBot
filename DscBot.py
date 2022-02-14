@@ -505,6 +505,7 @@ async def inline_technic(ctx,myCategory):
     else:
         channel_name = ctx.author.name
 
+    channel_name = channel_name.replace(" ","-").lower()
     val = False
     house_master = get(ctx.guild.members,id=HOUSE_MASTER)
     await house_master.send(f"{channel_name}-yardım-kanalı")
