@@ -515,7 +515,7 @@ async def inline_technic(ctx,myCategory):
     if not val:
         channel = await ctx.guild.create_text_channel(f"{channel_name}-yardım-kanalı", category=myCategory)
 
-    await channel.set_permissions()
+    await channel.set_permissions(ctx.author,read_messages=True,  send_messages = True, attach_files = True)
 
 
 
