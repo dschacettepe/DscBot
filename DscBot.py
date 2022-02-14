@@ -537,7 +537,7 @@ async def teknik_destek(ctx):
             val = True
             myCategory = i
 
-
+    await inline_technic(ctx,myCategory)
     await channel.send(f'{technic.mention} {competitorRole.mention} takımından {ctx.author.mention} yardımınızı istiyor')
     await ctx.message.delete()
 
