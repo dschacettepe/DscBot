@@ -494,6 +494,29 @@ async def mentor_destek(ctx):
     await channel.send(f'{mentors.mention} {competitorRole.mention} takımından {ctx.author.mention} yardımınızı istiyor')
     await ctx.message.delete()
 
+@client.command()
+async def inline_technic(ctx,myCategory):
+    global val
+    channels = ctx.guild.voice_channels
+    categories = ctx.guild.categories
+    channel_name = None
+    if not ctx.author.nick == None:
+        channel_name = ctx.author.nick
+    else:
+        channel_name = ctx.author.name
+
+    val = False
+    for i in channels:
+        if i.name.startswith(channel_name):
+            #print(i,len(member_type))
+            channel = await i.edit(name=f"{channel_name}-yardım-kanalı")
+            val = True
+
+    if not val:
+        channel = await ctx.guild.create_text_channel(f"{channel_name}-yardım-kanalı", category=myCategory)
+
+    await channel.set_permissions()
+
 
 
 @client.command()
@@ -505,6 +528,15 @@ async def teknik_destek(ctx):
     for roles in ctx.author.roles:
         if not roles.name in ['@everyone', 'Teknik Ekip', 'Jüri', 'Yarışmacı', 'Hackathon Görevlileri']:
             competitorRole = roles
+
+    myCategory = None
+    categories = ctx.guild.categories
+    val = False
+    for i in categories:
+        if i.name == "Teknik Destek":
+            val = True
+            myCategory = i
+
 
     await channel.send(f'{technic.mention} {competitorRole.mention} takımından {ctx.author.mention} yardımınızı istiyor')
     await ctx.message.delete()
@@ -519,7 +551,7 @@ async def mentor_update(ctx):
 
         await asyncio.sleep(10)
         await ctx.message.delete()
-    await message.delete()
+    await message.delete(ctx.author, read_messages=True, send_messages=True)
 
 
 @client.command()
