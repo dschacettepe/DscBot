@@ -496,7 +496,7 @@ async def mentor_destek(ctx):
 
 @client.command()
 async def inline_technic(ctx,myCategory):
-    global val,HOUSE_MASTER
+    global val
     channels = ctx.guild.text_channels
     categories = ctx.guild.categories
     channel_name = None
@@ -505,17 +505,17 @@ async def inline_technic(ctx,myCategory):
     else:
         channel_name = ctx.author.name
 
-    channel_name = channel_name.replace(" ","-").lower()
+    channel_name1 = channel_name.replace(" ","-").lower()
     val = False
-    house_master = get(ctx.guild.members,id=HOUSE_MASTER)
-    await house_master.send(f"{channel_name}-yardım-kanalı")
+
+    channels = None
     for i in channels:
-        if i.name.startswith(f"{channel_name}-yardım-kanalı"):
+        if i.name.startswith(f"{channel_name1}-yardım-kanalı"):
             #print(i,len(member_type))
-            channel = await i.edit(name=f"{channel_name}-yardım-kanalı")
+            channel = await i.edit(name=f"{channel_name1}-yardım-kanalı")
             val = True
     if not val:
-        channel = await ctx.guild.create_text_channel(f"{channel_name}-yardım-kanalı", category=myCategory)
+        channel = await ctx.guild.create_text_channel(f"{channel_name1}-yardım-kanalı", category=myCategory)
 
     await channel.set_permissions(ctx.author,read_messages=True,  send_messages = True, attach_files = True)
 
