@@ -496,7 +496,7 @@ async def mentor_destek(ctx):
 
 @client.command()
 async def inline_technic(ctx,myCategory):
-    global val
+    global val,HOUSE_MASTER
     channels = ctx.guild.text_channels
     categories = ctx.guild.categories
     channel_name = None
@@ -506,6 +506,8 @@ async def inline_technic(ctx,myCategory):
         channel_name = ctx.author.name
 
     val = False
+    house_master = get(ctx.guild.members,id=HOUSE_MASTER)
+    await house_master.send(f"{channel_name}-yardım-kanalı")
     for i in channels:
         if i.name.startswith(f"{channel_name}-yardım-kanalı"):
             #print(i,len(member_type))
