@@ -507,11 +507,10 @@ async def inline_technic(ctx,myCategory):
 
     val = False
     for i in channels:
-        if i.name.startswith(channel_name):
+        if i.name.startswith(f"{channel_name}-yardım-kanalı"):
             #print(i,len(member_type))
             channel = await i.edit(name=f"{channel_name}-yardım-kanalı")
             val = True
-
     if not val:
         channel = await ctx.guild.create_text_channel(f"{channel_name}-yardım-kanalı", category=myCategory)
 
