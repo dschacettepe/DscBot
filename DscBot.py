@@ -497,7 +497,7 @@ async def mentor_destek(ctx):
 @client.command()
 async def inline_technic(ctx,myCategory):
     global val
-    channels = ctx.guild.voice_channels
+    channels = ctx.guild.text_channels
     categories = ctx.guild.categories
     channel_name = None
     if not ctx.author.nick == None:
