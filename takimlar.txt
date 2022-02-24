@@ -20,6 +20,4 @@ Themis,Ali Sakallı,Aneliya Abdimalik,#2101,CoEfficient,Ali Sakallı,Aneliya Abd
 Collectors,ridvan,nurullahpolat,Rıdvan Özcan,Nurullah Polat
 Gorilla's Team,Ruveyda H. AKÇINAR,Mert Bülbül,Ruveyda Hilal AKÇINAR,Mert Bülbül
 A.I. G.O.A.T.s,FEYYEF,DeniZ,Ferhat Erdem YILMAZ ,Deniz BAKIR
-SCOCA,ÇAPULCU,mermela,Ali Gürkan Sevilmiş,Melih Emre Taşkın,Agah Gök,Mert Melih Aytemur,Ali Gürkan Sevilmiş,Melih Emre Taşkın
-IforWe,ensar,Berkay Günen,Emergy,Celestial Frog,Ensar Göktekin,Berkay Günen,Tuna Özkuşaksız,Meryem Rana Yurtçiçek
 MUVAFFAKİYET,Mert Arda Asar,MrPandaDev,yakuupcelik,Melih Fındık,Mert Arda Asar,Ege Kaan Işık,Yakup Muhammed Çelik,Melih Fındık
