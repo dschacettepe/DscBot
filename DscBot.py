@@ -225,7 +225,7 @@ async def help(ctx):
     #embed.add_field(name="!!kalan_sure", value="Hackatonun bitimine kalan süreyi verir.", inline=False)
     #embed.add_field(name="!!yasakli_kelime_ekle", value="Yasaklı kelime listesine yeni kelimeler eklemenizi sağlar.", inline=False)
     embed.add_field(name="!!kalan_sure", value="Hackathon'un bitimine kalan süreyi verir.", inline=False)
-    embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
+    #embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
     embed.add_field(name="!!mentor_destek", value="Mentorlere yardım istediğinize dair bir bildirim gider.", inline=False)
     embed.add_field(name="!!teknik_destek", value="Tekniik destek ekibine yardım istediğinize dair bir bildirim gider.", inline=False)
     message = await ctx.send(embed=embed)
@@ -456,7 +456,7 @@ async def timer(ctx,full_time : int,speaker : discord.Member):
         await ctx.message.delete()
         await message.delete()
 
-
+"""
 @client.command()
 async def mentor_describe(ctx):
     global mentors_list
@@ -479,7 +479,7 @@ async def mentor_describe(ctx):
         await asyncio.sleep(300)
         await ctx.message.delete()
         await message.delete()
-
+"""
 
 @client.command()
 async def mentor_destek(ctx):
