@@ -417,9 +417,11 @@ async def takim_olustur(ctx,teams_list : str):
             i = i.rstrip()
             details = i.split(",")
 
+            val = True
             myCategory = get(GUILD.categories,name=f"{details[0]}")
             if myCategory == None:
                 myCategory = await GUILD.create_category(f"{details[0]}")
+                val = False
 
             myRole = get(GUILD.roles,name=f"{details[0]}")
             if myRole == None:
@@ -432,10 +434,10 @@ async def takim_olustur(ctx,teams_list : str):
             await myCategory.set_permissions(officer, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(ctx.guild.default_role, read_messages=False, connect=False)
 
-            if get(GUILD.text_channels,name=f"{details[0]} ses kanalı") == None:
+            if val:
                 await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
 
-            if get(GUILD.voice_channels,name=f"{details[0]} metin kanalı") == None:
+            if val:
                 await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
 
             for j in details[1:]:
