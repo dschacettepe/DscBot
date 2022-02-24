@@ -416,16 +416,28 @@ async def takim_olustur(ctx,teams_list : str):
         for i in lines:
             i = i.rstrip()
             details = i.split(",")
-            myCategory = await GUILD.create_category(f"{details[0]}")
-            myRole = await GUILD.create_role(name=f"{details[0]}")
+
+            myCategory = get(GUILD.categories,name=f"{details[0]}")
+            if myCategory == None:
+                myCategory = await GUILD.create_category(f"{details[0]}")
+
+            myRole = get(GUILD.roles,name=f"{details[0]}")
+            if myRole == None:
+                myRole = await GUILD.create_role(name=f"{details[0]}")
+
             mentor = get(GUILD.roles, name='Mentorlar')
             officer = get(GUILD.roles, name='Hackathon Görevlileri')
             await myCategory.set_permissions(myRole, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(mentor, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(officer, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(ctx.guild.default_role, read_messages=False, connect=False)
-            await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
-            await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
+
+            if get(GUILD.text_channels,name=f"{details[0]} ses kanalı") == None:
+                await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
+
+            if get(GUILD.voice_channels,name=f"{details[0]} metin kanalı") == None:
+                await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
+
             for j in details[1:]:
                 try:
                     user = get(ctx.guild.members, nick=j)
