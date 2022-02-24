@@ -115,25 +115,25 @@ async def on_message(message):
             return
         elif str(message.content).startswith("http") or str(message.content).startswith("www."):
             return
-        """elif not message.channel == client.get_channel(UNKNOWN_ID):
+        elif not message.channel == client.get_channel(UNKNOWN_ID):
             if message.author.id != BOT_ID:
                 if message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
                     await message.delete()
                     return
-                banned = ' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
+                banned = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~0123456789'
                 channel = message.channel
                 content = str(message.content).lower()
                 for i in banned:
                     content = content.replace(i, "")
                 for i in banned_words:
-                    if i.rstrip() in content:
+                    if " "+i.rstrip()+" " in content:
                         await message.delete()
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         break
             elif message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
                 await message.delete()
-                return"""
+                return
     except Exception:
         pass
 
