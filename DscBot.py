@@ -113,6 +113,8 @@ async def on_message(message):
                 return
             await message.delete()
             return
+        elif str(message.content).startswith("http") or str(message.content).startswith("www."):
+            return
         elif not message.channel == client.get_channel(UNKNOWN_ID):
             if message.author.id != BOT_ID:
                 if message.channel.id == COMMAND_CH and (not message.content.startswith("!!")):
