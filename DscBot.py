@@ -419,8 +419,10 @@ async def takim_olustur(ctx,teams_list : str):
             myCategory = await GUILD.create_category(f"{details[0]}")
             myRole = await GUILD.create_role(name=f"{details[0]}")
             mentor = get(GUILD.roles, name='Mentorlar')
+            officer = get(GUILD.roles, name='Hackathon Görevlileri')
             await myCategory.set_permissions(myRole, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(mentor, read_messages=True, send_messages=True, connect=True, speak=True)
+            #await myCategory.set_permissions(officer, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(ctx.guild.default_role, read_messages=False, connect=False)
             await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
             await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
@@ -435,7 +437,7 @@ async def takim_olustur(ctx,teams_list : str):
                         await user.add_roles(myRole)
                         continue
                     except Exception:
-                        await ctx.author.send(f'{j} bulunamadı')
+                        await ctx.author.send(f'{details[0]} takımından {j} bulunamadı')
                         continue
         message = await ctx.send('Takımlar başarıyla oluşturuldu.')
         await asyncio.sleep(10)
