@@ -427,6 +427,7 @@ async def takim_olustur(ctx,teams_list : str):
             await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
             await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
             for j in details[1:]:
+                j = j.lower()
                 try:
                     user = get(ctx.guild.members, nick=j)
                     await user.add_roles(myRole)
