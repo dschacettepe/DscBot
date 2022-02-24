@@ -1,24 +1,25 @@
-Arktori,memin#8340,eliftoraman#8639
-SCOCA,ÇAPULCU#3930,Mert Melih Aytemur#4599,Ali Gürkan Sevilmiş#6369,Melih Emre Taşkın#1637
-ArchAngel,FurkanYaman#6234,GÖRKEM GÜL#9654,,ReWoq#9180
-Love_Ekip,_mert_#7300,minlover#0489,Ahmet.B#1471
-Let's Go,selinaygun#7070,Serdar Özdemir#5068
-Clover of the Four Leaf,F.Feyza Nur Satılmış#8609,İkra Gül Koçak#2951,2xDoa#5947,iremkkhy#0068
-Catalyst,Ezgi Yılmaz#7451,Muhammet Kır#3124
-solutionistDashes,Gokser Pirik#8927,elvan#9537
-IforWe,ensar#7527,Berkay Günen#3391,Emergy#4543,Celestial Frog#6180
-Ad Hoc,beyza#3764,İZ#6588,buket#6780
-Tabula Rasa,Emir Kalburcu#0240,samsepiol#2012,Ufuk Öztop#8177
-EduShare ,sarkacwom#2752,SoraaRose#1164,,fatih_baser#9483
-Code Coder & Codest,Selim#0886,Ecem#4104,Hasret #8064
-Beran Setaou,Furkan emircan dursun#7528,Orhan#5653,Berke Karaali#8089,Ömer Taş#8966
-Greens,Alpernsydn1502#8047,BerkDemirel#9542,Burak Yılmaz#4267,Femresirvan#9566
-CARLATOS,Rukiye#8370,ali1bey#6800
-Icarus,berkg0k#8173,Yunus Emre Alpu#5124,sema#2363
-Sortie Art House,salihztrk1#4680,fernvveh#1176
-Themis,Ali Sakallı #7935,Aneliya Abdimalik #0547,#2101,CoEfficient#9903
-Collectors,ridvan#8415,nurullahpolat#7961
-Gorilla's Team,Ruveyda H. AKÇINAR #1867,Mert Bülbül #4810
-A.I. G.O.A.T.s,FEYYEF#6509,DeniZ#6063
-IforWe,ensar#7527,Berkay Günen#3391,Emergy#4543,Celestial Frog#6180
-MUVAFFAKİYET,Mert Arda Asar#7270,MrPandaDev#8749,yakuupcelik#8557,Melih Fındık#7934
+Arktori,memin,eliftoraman,Mehmet Emin Çakır,Elif Toraman,
+SCOCA,ÇAPULCU,Mert Melih Aytemur,Ali Gürkan Sevilmiş,Melih Emre Taşkın,Agah Gök,Mert Melih Aytemur,Ali Gürkan Sevilmiş,Melih Emre Taşkın
+ArchAngel,FurkanYaman,GÖRKEM GÜL,ReWoq,Furkan Yaman,Hamza Görkem Gül,Çağıl Erser,Mustafa Çiftçi
+Love_Ekip,_mert_,minlover,Ahmet.B,Mert Demirel,Sıray Tarım,Ahmet Bahar
+Let's Go,selinaygun,Serdar Özdemir,Selin Aygün,Serdar Özdemir
+Clover of the Four Leaf,F.Feyza Nur Satılmış,İkra Gül Koçak,2xDoa,iremkkhy,Fatma Feyza Nur Satılmış,İkra Gül Koçak,Doğa Güney,İrem Kocakahya
+Catalyst,Ezgi Yılmaz,Muhammet Kır,Ezgi Yılmaz,Muhammet Kır,Sevim Çandır,Yiğit Yakupoğlu 
+solutionistDashes,Gokser Pirik,elvan,Gökser Pirik,Elvan Özen
+IforWe,ensar,Berkay Günen,Emergy,Celestial Frog,Ensar Göktekin,Berkay Günen,Tuna Özkuşaksız,Meryem Rana Yurtçiçek
+Ad Hoc,beyza,İZ,buket,Beyza Göncüler,İrem Zehra Altun,Buket Bayık
+Tabula Rasa,Emir Kalburcu,samsepiol,Ufuk Öztop,Emir Kalburcu,Furkan Secgin,Ufuk Öztop
+EduShare,sarkacwom,SoraaRose,,fatih_baser,Merve Korkmaz,Sevde Rana Yiğit,Yusuf Gültaç,Fatih Başer 
+Code Coder & Codest,Selim,Ecem,Hasret,Ahmet Selim Karaca,Ecem Sıla Gök,Hasret Türkmen
+Beran Setaou,Furkan emircan dursun,Orhan,Berke Karaali,Ömer Taş,Furkan emircan dursun,orhan akarsu,berke karaali,Ömer faruk taş
+Greens,Alpernsydn1502,BerkDemirel,Burak Yılmaz,Femresirvan,Ali Alperen Soydan,Mustafa Berk Demirel,Burak Yılmaz,Fırat Emre Şirvan
+CARNOTOS,Rukiye,ali1bey,Rukiye Ağcabay,Muhammed Ali Hakkatapan
+Icarus,berkg0k,Yunus Emre Alpu,sema,Gökberk Şen,Yunus Emre Alpu,Yusuf Alpu,Sema Altınışık
+Sortie Art House,salihztrk1,fernvveh,Abdullah Salih Öztürk,Mehmet Melih Çandır
+Themis,Ali Sakallı,Aneliya Abdimalik,#2101,CoEfficient,Ali Sakallı,Aneliya Abdimalik,Emre Kalkan,Eren Tuna Açıkbaş
+Collectors,ridvan,nurullahpolat,Rıdvan Özcan,Nurullah Polat
+Gorilla's Team,Ruveyda H. AKÇINAR,Mert Bülbül,Ruveyda Hilal AKÇINAR,Mert Bülbül
+A.I. G.O.A.T.s,FEYYEF,DeniZ,Ferhat Erdem YILMAZ ,Deniz BAKIR
+SCOCA,ÇAPULCU,mermela,Ali Gürkan Sevilmiş,Melih Emre Taşkın,Agah Gök,Mert Melih Aytemur,Ali Gürkan Sevilmiş,Melih Emre Taşkın
+IforWe,ensar,Berkay Günen,Emergy,Celestial Frog,Ensar Göktekin,Berkay Günen,Tuna Özkuşaksız,Meryem Rana Yurtçiçek
+MUVAFFAKİYET,Mert Arda Asar,MrPandaDev,yakuupcelik,Melih Fındık,Mert Arda Asar,Ege Kaan Işık,Yakup Muhammed Çelik,Melih Fındık
