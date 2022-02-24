@@ -126,7 +126,7 @@ async def on_message(message):
                 for i in banned:
                     content = content.replace(i, "")
                 for i in banned_words:
-                    if i.rstrip() in content:
+                    if " "+i.rstrip()+" " in " "+content+" ":
                         await message.delete()
                         await channel.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
                         await message.author.send("İçinde yasaklı bir kelime bulunan mesaj gönderemezsiniz.")
