@@ -422,7 +422,7 @@ async def takim_olustur(ctx,teams_list : str):
             officer = get(GUILD.roles, name='Hackathon Görevlileri')
             await myCategory.set_permissions(myRole, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(mentor, read_messages=True, send_messages=True, connect=True, speak=True)
-            #await myCategory.set_permissions(officer, read_messages=True, send_messages=True, connect=True, speak=True)
+            await myCategory.set_permissions(officer, read_messages=True, send_messages=True, connect=True, speak=True)
             await myCategory.set_permissions(ctx.guild.default_role, read_messages=False, connect=False)
             await GUILD.create_voice_channel(f"{details[0]} ses kanalı", category=myCategory, sync_permissions=True)
             await GUILD.create_text_channel(f"{details[0]} metin kanalı", category=myCategory, sync_permissions=True)
