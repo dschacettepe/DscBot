@@ -471,7 +471,9 @@ async def takim_olustur(ctx,teams_list : str):
         message = await ctx.send('Takımlar başarıyla oluşturuldu.')
         await asyncio.sleep(10)
         await message.delete()
-        await ctx.author.send(errors)
+        file = open("errorsDsc.txt","w",encoding='utf-8')
+        file.writelines(errors)
+        await ctx.author.send(file=discord.File("errorsDsc.txt"))
     await ctx.message.delete()
 
 @client.command()
