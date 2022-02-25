@@ -147,7 +147,7 @@ async def on_raw_reaction_add(payload):
     await statistic(guild=client.get_guild(payload.guild_id))
 
 async def add_a_role(payload,reaction,role_wanted):
-    global mentors_list,ROLE_MESSAGE
+    global mentors_list,ROLE_MESSAGE,HOUSE_MASTER
     if payload.message_id == ROLE_MESSAGE and payload.emoji.name == reaction:
         member = payload.member
         guild = member.guild
@@ -156,6 +156,19 @@ async def add_a_role(payload,reaction,role_wanted):
         if emoji == reaction:
             role1 = get(guild.roles,name=role_wanted)
         await member.add_roles(role1)
+        if role_wanted == "Yarışmacı":
+            with open("takimlar.txt","r",encoding='utf-8') as file:
+                lines = file.readlines()
+                for line in lines:
+                    if member.name in line or member.nick in line:
+                        details = line.split(",")
+                        try:
+                            team_role = get(guild.roles,name=details[0])
+                            await member.add_roles(team_role)
+                        except Exception:
+                            master = get(guild.members,id=HOUSE_MASTER)
+                            await master.send(f"{member.name} bir takımı yok ya da bulunamadı.")
+
     """if role_wanted == 'Mentorlar':
       new_mentor = Mentor(member)
       mentors_list.append(new_mentor)"""
