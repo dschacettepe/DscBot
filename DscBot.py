@@ -473,7 +473,7 @@ async def takim_olustur(ctx,teams_list : str):
         await message.delete()
         file = open("errorsDsc.txt","w",encoding='utf-8')
         for line12 in errors:
-            file.writelines(line12)
+            file.writelines(line12+"\n")
         file.close()
         await ctx.author.send(file=discord.File("errorsDsc.txt"))
     await ctx.message.delete()
