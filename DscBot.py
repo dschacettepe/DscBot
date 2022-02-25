@@ -417,11 +417,11 @@ async def takim_olustur(ctx,teams_list : str):
             i = i.rstrip()
             details = i.split(",")
 
-            val = True
+            val = False
             myCategory = get(GUILD.categories,name=f"{details[0]}")
             if myCategory == None:
                 myCategory = await GUILD.create_category(f"{details[0]}")
-                val = False
+                val = True
 
             myRole = get(GUILD.roles,name=f"{details[0]}")
             if myRole == None:
