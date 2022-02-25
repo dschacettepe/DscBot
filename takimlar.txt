@@ -29,3 +29,4 @@ Echo,Ezgi Yılmaz,Ezgi Yılmaz,Yiğit Yakupoğlu ,yigitt,Muhammet Kır,Sevim Ça
 Approducers,Betül Üsküdar,betulusk,Ertuğrul Sağdıç,ertugrulsagdic,Fatih Emre Kalem,Abdullah Oğuz,aoguz
 GDSCZirve,Taha Baturhan Akbulut,Baturhan Akbulut,Ekrem Bal,ekrembal#5493,Helin Geleri,Fırat Alabuga,Fırat Alabuga
 Sürdüremeyenler,Buğrahan Zeki Kadak,Buğrahan Zeki Kadak,Ceren Dökmener,cernn,Alperen Yalçın
+FALY,Mehmet Ali Çelik,Feyyaz Can Köse,Mali,Feyyaz Can
