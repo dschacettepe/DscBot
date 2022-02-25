@@ -14,7 +14,7 @@ Code Coder & Codest,Selim,Ecem,Hasret,Ahmet Selim Karaca,Ecem Sıla Gök,Hasret 
 Beran Setaou,Furkan emircan dursun,Orhan,Berke Karaali,Ömer Taş,Furkan emircan dursun,orhan akarsu,berke karaali,Ömer faruk taş
 Greens,Alpernsydn1502,BerkDemirel,Burak Yılmaz,Femresirvan,Ali Alperen Soydan,Mustafa Berk Demirel,Burak Yılmaz,Fırat Emre Şirvan
 CARNOTOS,Rukiye,ali1bey,Rukiye Ağcabay,Muhammed Ali Hakkatapan
-Icarus,berkg0k,Yunus Emre Alpu,sema,Gökberk Şen,Yunus Emre Alpu,Yusuf Alpu,Sema Altınışık
+Icaria,berkg0k,Yunus Emre Alpu,sema,Gökberk Şen,Yunus Emre Alpu,Yusuf Alpu,Sema Altınışık
 Sortie Art House,salihztrk1,fernvveh,Abdullah Salih Öztürk,Mehmet Melih Çandır
 Themis,Ali Sakallı,Aneliya Abdimalik,#2101,CoEfficient,Ali Sakallı,Aneliya Abdimalik,Emre Kalkan,Eren Tuna Açıkbaş
 Collectors,ridvan,nurullahpolat,Rıdvan Özcan,Nurullah Polat
