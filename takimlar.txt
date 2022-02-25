@@ -3,12 +3,12 @@ SCOCA,ÇAPULCU,Mert Melih Aytemur,Ali Gürkan Sevilmiş,Melih Emre Taşkın,Agah
 ArchAngel,FurkanYaman,GÖRKEM GÜL,ReWoq,Furkan Yaman,Hamza Görkem Gül,Çağıl Erser,Mustafa Çiftçi
 Love_Ekip,_mert_,minlover,Ahmet.B,Mert Demirel,Sıray Tarım,Ahmet Bahar
 Let's Go,selinaygun,Serdar Özdemir,Selin Aygün,Serdar Özdemir
-Clover of the Four Leaf,F.Feyza Nur Satılmış,İkra Gül Koçak,2xDoa,iremkkhy,Fatma Feyza Nur Satılmış,İkra Gül Koçak,Doğa Güney,İrem Kocakahya
+Clover of the Four Leaf,F.Feyza Nur Satılmış,İkra Gül Koçak,2xDoa,iremkocakahya,Fatma Feyza Nur Satılmış,İkra Gül Koçak,Doğa Güney,İrem Kocakahya
 Catalyst,Ezgi Yılmaz,Muhammet Kır,Ezgi Yılmaz,Muhammet Kır,Sevim Çandır,Yiğit Yakupoğlu 
 solutionistDashes,Gokser Pirik,elvan,Gökser Pirik,Elvan Özen
 IforWe,ensar,Berkay Günen,Emergy,Celestial Frog,Ensar Göktekin,Berkay Günen,Tuna Özkuşaksız,Meryem Rana Yurtçiçek
 Ad Hoc,beyza,İZ,buket,Beyza Göncüler,İrem Zehra Altun,Buket Bayık
-Tabula Rasa,Emir Kalburcu,samsepiol,Ufuk Öztop,Emir Kalburcu,Furkan Secgin,Ufuk Öztop
+Tabula Rasa,Emir Kalburcu,samsepiol,Ufuk Öztop,Emir Kalburcu,Furkan Secgin,Ufuk Öztop,Emine Sude Delier,freshduygularinadami
 EduShare,sarkacwom,SoraaRose,,fatih_baser,Merve Korkmaz,Sevde Rana Yiğit,Yusuf Gültaç,Fatih Başer 
 Code Coder & Codest,Selim,Ecem,Hasret,Ahmet Selim Karaca,Ecem Sıla Gök,Hasret Türkmen
 Beran Setaou,Furkan emircan dursun,Orhan,Berke Karaali,Ömer Taş,Furkan emircan dursun,orhan akarsu,berke karaali,Ömer faruk taş
@@ -21,7 +21,7 @@ Collectors,ridvan,nurullahpolat,Rıdvan Özcan,Nurullah Polat
 Gorilla's Team,Ruveyda H. AKÇINAR,Mert Bülbül,Ruveyda Hilal AKÇINAR,Mert Bülbül
 A.I. G.O.A.T.s,FEYYEF,DeniZ,Ferhat Erdem YILMAZ ,Deniz BAKIR
 MUVAFFAKİYET,Mert Arda Asar,MrPandaDev,yakuupcelik,Melih Fındık,Mert Arda Asar,Ege Kaan Işık,Yakup Muhammed Çelik,Melih Fındık
-PeacefulCoding,Yakup Bülbül,yakup,Ali Akkaya,A.akkaya,Hatice Kocabaş,Akif Hasdemir,armykous
+PeacefulCoding,Yakup Bülbül,yakup,Ali Akkaya,A.akkaya,Hatice Kocabaş,Akif Hasdemir,armykous 
 Stronger2gether,Emincan Karasoy,Zagreus,Selami Çalışkan,Selami Caliskan,Hilal Kırceylan,Ömer Faruk Şahin,salazar
 DSC Karatekin Team,Berk Küçük,berkkucukk,Emine Çankaya,Emine Çankaya,Berkant Kalender,Hasan Ortekin,Hasann
 Lioness,Beste Şengül,beste,Ece Yücer,ece
