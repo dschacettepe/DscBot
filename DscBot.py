@@ -424,6 +424,8 @@ async def takim_olustur(ctx,teams_list : str):
     global GUILD
     if ctx.author.guild_permissions.administrator:
 
+        errors = []
+
         with open(teams_list,'r',encoding='utf-8') as file:
             lines = file.readlines()
         for i in lines:
@@ -464,11 +466,12 @@ async def takim_olustur(ctx,teams_list : str):
                         await user.add_roles(myRole)
                         continue
                     except Exception:
-                        await ctx.author.send(f'{details[0]} takımından {j} bulunamadı')
+                        errors.append(f'{details[0]} takımından {j} bulunamadı')
                         continue
         message = await ctx.send('Takımlar başarıyla oluşturuldu.')
         await asyncio.sleep(10)
         await message.delete()
+        await ctx.author.send(errors)
     await ctx.message.delete()
 
 @client.command()
