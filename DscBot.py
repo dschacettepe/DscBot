@@ -242,12 +242,12 @@ async def help(ctx):
     embed.add_field(name="!!kalan_sure", value="Hackathon'un bitimine kalan süreyi verir.", inline=False)
     #embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
     embed.add_field(name="!!mentor_destek <yardım-konusu>", value="Mentorlere hangi konuda yardım istediğinize dair bir bildirim gider.", inline=False)
-    embed.add_field(name="!!teknik_destek", value="Tekniik destek ekibine yardım istediğinize dair bir bildirim gider.", inline=False)
+    embed.add_field(name="!!teknik_destek <yardım-konusu>", value="Tekniik destek ekibine hangi konuda yardım istediğinize dair bir bildirim gider.", inline=False)
     message = await ctx.send(embed=embed)
 
     time.sleep(10)
     await ctx.message.delete()
-    await message.delete()
+    #await message.delete()
 
 @client.command()
 async def teknik_help(ctx):
@@ -565,6 +565,7 @@ async def teknik_destek(ctx):
     global TECH_SUPPORT_CH
     channel = client.get_channel(TECH_SUPPORT_CH)
     technic = get(ctx.guild.roles, name='Teknik Ekip')
+    content = ctx.message.content[16:]
     competitorRole = None
     for roles in ctx.author.roles:
         if not roles.name in ['@everyone', 'Teknik Ekip', 'Jüri', 'Yarışmacı', 'Hackathon Görevlileri']:
@@ -579,7 +580,7 @@ async def teknik_destek(ctx):
             myCategory = i
 
     await inline_technic(ctx,myCategory)
-    await channel.send(f'{technic.mention} {competitorRole.mention} takımından {ctx.author.mention} yardımınızı istiyor')
+    await channel.send(f'{technic.mention} {competitorRole.mention} takımından {ctx.author.mention} {content} konusunda yardımınızı istiyor')
     await ctx.message.delete()
 
 @client.command()
