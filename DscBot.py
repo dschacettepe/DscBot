@@ -247,7 +247,7 @@ async def help(ctx):
 
     time.sleep(10)
     await ctx.message.delete()
-    #await message.delete()
+    await message.delete()
 
 @client.command()
 async def teknik_help(ctx):
