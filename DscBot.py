@@ -241,7 +241,7 @@ async def help(ctx):
     #embed.add_field(name="!!yasakli_kelime_ekle", value="Yasaklı kelime listesine yeni kelimeler eklemenizi sağlar.", inline=False)
     embed.add_field(name="!!kalan_sure", value="Hackathon'un bitimine kalan süreyi verir.", inline=False)
     #embed.add_field(name="!!mentor_describe <mentor-isim>", value="İsmi girilen mentor veya mentorlerin bilgilerini gösterir.", inline=False)
-    embed.add_field(name="!!mentor_destek", value="Mentorlere yardım istediğinize dair bir bildirim gider.", inline=False)
+    embed.add_field(name="!!mentor_destek <yardım-konusu>", value="Mentorlere hangi konuda yardım istediğinize dair bir bildirim gider.", inline=False)
     embed.add_field(name="!!teknik_destek", value="Tekniik destek ekibine yardım istediğinize dair bir bildirim gider.", inline=False)
     message = await ctx.send(embed=embed)
 
@@ -524,12 +524,13 @@ async def mentor_destek(ctx):
     global MENTOR_HELP_CH
     mentors = get(ctx.guild.roles,name='Mentorlar')
     channel = client.get_channel(MENTOR_HELP_CH)
+    content = ctx.message.content[16:]
     competitorRole = None
     for roles in ctx.author.roles:
         if not roles.name in ['@everyone','Teknik Ekip','Jüri','Yarışmacı','Hackathon Görevlileri','DSC Bot']:
             competitorRole = roles
 
-    await channel.send(f'{mentors.mention} {competitorRole.mention} takımından {ctx.author.mention} yardımınızı istiyor')
+    await channel.send(f'{mentors.mention} {competitorRole.mention} takımından {ctx.author.mention} {content} konusunda yardımınızı istiyor')
     await ctx.message.delete()
 
 @client.command()
