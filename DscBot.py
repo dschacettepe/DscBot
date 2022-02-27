@@ -343,6 +343,7 @@ async def kalan_sure(ctx):
     realtime1.insert(0,realtime[2])
     # gün-saat-dakika-saniye
     wantedTime = [27,20,59,59]
+    await ctx.author.send(realtime1)
     resultTime = []
 
     resultTime.append(int(wantedTime[0]) - int(realtime1[0]))
